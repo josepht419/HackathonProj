@@ -1,22 +1,108 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React , {useState}from 'react';
+import { StyleSheet, Text, View,Image, TextInput, Button, TouchableOpacity } from 'react-native'; 
 
-export default function App() {
+
+export default function App() { 
+
+  const [email, setEmail] = useState(''); 
+  const [password, setPassword] = useState('');
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <Text>Testing!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <View style={styles.container}> 
+
+    <StatusBar style="auto" /> 
+
+    <View style={styles.inputView}>
+      <TextInput style = {styles.TextInput}
+         placeholder = "Email"
+          placeholderTextColor = "#003f5c" 
+          onChangeText = {(email)=> setEmail(email)}
+      
+      />  
+      </View>  
+
+    <View style = {styles.inputView}>
+      <TextInput style = {styles.TextInput}
+      
+        placeholder = "Password" 
+        placeholderTextColor = "#003f5c"
+        secureTextEntry={true}
+        onChangeText = {(password)=> setPassword(password)}
+      >        
+      </TextInput>
+
+</View>
+
+<TouchableOpacity>
+  <Text style={styles.forgot_button}>Forgot Password?</Text>
+</TouchableOpacity>
+
+<TouchableOpacity style={styles.loginBtn}>
+  <Text style={styles.loginText}>Login</Text>
+</TouchableOpacity>
+
+<TouchableOpacity>
+  <Text style={styles.createAccount_button}>Don't have an account? Sign Up</Text>
+</TouchableOpacity>
+</View>
+ 
   );
 }
 
 const styles = StyleSheet.create({
+   
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+      flex: 1, 
+      backgroundColor : "#000000", 
+      alignItems: "center", 
+      justifyContent: "center"
+  }, 
+
+  image:{
+      marginBottom: 40,
+  }, 
+
+  inputView: {
+      backgroundColor:"#FF69B4", 
+      borderRadius: 30, 
+      width: "70%", 
+      height: 45, 
+      marginBottom: 20, 
+
+      alignItems : "center",
+  }, 
+
+  TextInput: {
+      height: 50,
+      flex: 1,
+      padding: 10,
+      marginLeft: 20,
+    },
+   
+    forgot_button: {
+      height: 30,
+      color: "#fff",
+      marginBottom: 20, 
+      marginTop: 0
+    },
+   
+    loginBtn: {
+      width: "80%",
+      borderRadius: 25,
+      height: 50,
+      alignItems: "center",
+      justifyContent: "center",
+      marginTop: 40,
+      backgroundColor: "#d4af37",
+      marginBottom: 10
+    },
+
+    createAccount_button: {
+      height: 30,
+      color: "#fff",
+      marginBottom: 30, 
+      marginTop: 30
+    }
+
+})
